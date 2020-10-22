@@ -4,7 +4,8 @@ var http = require("http").createServer(app);
 var io = require("socket.io")(http);
 
 let clients = [];
-io.origins('*:*');
+// io.origins('*:*');
+io.set('origins', '*:*');
 io.on("connection", (socket) => {
 
   socket.on("store-client-info", (data) => {
@@ -51,6 +52,6 @@ io.on("connection", (socket) => {
 });
 
 app.get("/", (req, res) => res.send("hello!"));
-http.listen(3000, () => {
-  console.log("listening on *:3000");
+http.listen(5000, () => {
+  console.log("listening on *:5000");
 });
